@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
-import Single from "./pages/single/Single";
-import New from "./pages/new/New";
+import Hotel from './pages/hotel/hotel';
+import NewHotel from './pages/newHotel/newHotel';
+import Transaction from './pages/transaction/transaction';
+import Room from './pages/room/room';
+import NewRoom from './pages/newRoom/newRoom';
 
 
 function App() {
@@ -12,20 +14,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
-              <Route path="new" element={<New />} />
-            </Route>
-            <Route path="products">
-              <Route index element={<List />} />
-              <Route path=":productId" element={<Single />} />
-              <Route path="new" element={<New />} />
-            </Route>
-          </Route>
+          <Route index element={<Login />} />
+          <Route path='/admin' element={<Home />} />
+          <Route path='/hotel' element={<Hotel />} />
+          <Route path='/room' element={<Room />} />
+          <Route path='/transaction' element={<Transaction />} />
+          <Route path="/newhotel" element={<NewHotel />} />
+          <Route path="/newroom" element={<NewRoom />} />
         </Routes>
       </BrowserRouter>
     </div>

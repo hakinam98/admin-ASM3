@@ -1,85 +1,78 @@
 import './sidebar.scss'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import QueryStatsIcon from '@mui/icons-material/QueryStats';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import SettingsIcon from '@mui/icons-material/Settings';
-import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
+import ApartmentSharpIcon from '@mui/icons-material/ApartmentSharp';
+import BedroomParentSharpIcon from '@mui/icons-material/BedroomParentSharp';
+import ReceiptLongSharpIcon from '@mui/icons-material/ReceiptLongSharp';
+import { useNavigate } from 'react-router-dom';
 const Sidebar = () => {
+  const navigation = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    navigation('/')
+  }
   return (
     <div className='sidebar'>
-        <div className='top'>
-          <span className='logo'>Admin Panel</span>
-        </div>
-        <hr />
-        <div className='center'>
-          <ul>
-            <p className="title">MAIN MENU</p>
+      <div className='top'>
+        <span className='logo'>Admin Page</span>
+      </div>
+      <hr />
+      <div className='center'>
+        <ul>
+          <p className="title">MAIN</p>
+          <a onClick={() => navigation('/admin')}>
             <li>
               <DashboardIcon className='icon' />
               <span>Dashboard</span>
             </li>
-            <p className="title">LISTS MENU</p>
+          </a>
+          <p className="title">LISTS</p>
+          <li>
+            <GroupIcon className='icon' />
+            <span>Users</span>
+          </li>
+          <a onClick={() => navigation('/hotel')}>
             <li>
-              <GroupIcon className='icon' />
-              <span>Users</span>
+              <ApartmentSharpIcon className='icon' />
+              <span>Hotels</span>
             </li>
+          </a>
+          <a onClick={() => navigation('/room')}>
             <li>
-              <Inventory2Icon className='icon' />
-              <span>Products</span>
+              <BedroomParentSharpIcon className='icon' />
+              <span>Rooms</span>
             </li>
+          </a>
+          <a onClick={() => navigation('/transaction')}>
             <li>
-              <ProductionQuantityLimitsIcon className='icon' />
-              <span>Orders</span>
+              <ReceiptLongSharpIcon className='icon' />
+              <span>Transactions</span>
             </li>
+          </a>
+          <p className="title">New</p>
+          <a onClick={() => navigation('/newhotel')}>
             <li>
-              <LocalShippingIcon className='icon' />
-              <span>Delivery</span>
+              <ApartmentSharpIcon className='icon' />
+              <span>New Hotel</span>
             </li>
-            <p className="title">OTHER MENU</p>
+          </a>
+          <a onClick={() => navigation('/newroom')}>
+
             <li>
-              <QueryStatsIcon className='icon' />
-              <span>Status</span>
+              <BedroomParentSharpIcon className='icon' />
+              <span>New Room</span>
             </li>
-            <li>
-              <NotificationsIcon className='icon' />
-              <span>Notifications</span>
-            </li>
-            <p className="title">SERVICES</p>
-            <li>
-              <HealthAndSafetyIcon className='icon' />
-              <span>System Health</span>
-            </li>
-            <li>
-              <PsychologyIcon className='icon' />
-              <span>Logs</span>
-            </li>
-            <li>
-              <SettingsIcon className='icon' />
-              <span>Settings</span>
-            </li>
-            <p className="title">ACCOUNT</p>
-            <li>
-              <PersonIcon className='icon' />
-              <span>Profile</span>
-            </li>
+          </a>
+          <p className="title">User</p>
+          <a onClick={handleLogout}>
             <li>
               <ExitToAppIcon className='icon' />
               <span>Logout</span>
             </li>
-          </ul>
-        </div>
-        <div className='bottom'>
-          <div className='colorOptions'></div>
-          <div className='colorOptions'></div>
-        </div>
+          </a>
+        </ul>
+      </div>
     </div>
   )
 }

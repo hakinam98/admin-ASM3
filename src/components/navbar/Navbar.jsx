@@ -8,7 +8,7 @@ import MessageIcon from '@mui/icons-material/Message';
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <div className="wrapper">
+      {/* <div className="wrapper">
         <div className="search">
           <input type="text" placeholder='Search...' />
           <SearchIcon />
@@ -33,7 +33,7 @@ const Navbar = () => {
             <img src='https://www.iriset.in/tms/uploads/profile/profile.png' alt="user" className='avatar' />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -1,0 +1,35 @@
+.chart {
+    flex: 7;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        margin-bottom: 20px;
+    }
+
+    .chartGrid {
+        stroke: rgb(228, 225, 225);
+    }
+}
+
+.statusBooked {
+    border-radius: 5px;
+    background-color: rgb(221, 160, 160);
+    color: rgb(18, 145, 71);
+}
+
+.statusCheckin {
+    border-radius: 5px;
+    background-color: rgb(142, 218, 142);
+    color: rgb(18, 145, 71);
+}
+
+.statusCheckout {
+    border-radius: 5px;
+    background-color: lightgrey;
+    color: rgb(18, 145, 71);
+}
