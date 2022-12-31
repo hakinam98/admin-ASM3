@@ -12,6 +12,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
     "bootstrap": "^5.2.3",
+    "font-awesome": "^4.7.0",
+    "mdb-react-ui-kit": "^5.1.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.7.0",
     "react-circular-progressbar": "^2.0.4",
@@ -22,6 +24,7 @@
     "react-scripts": "5.0.1",
     "recharts": "^2.1.14",
     "sass": "^1.51.0",
+    "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

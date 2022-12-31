@@ -1,20 +1,20 @@
-import './room.scss'
+import './chat.scss'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
-import RoomList from '../../components/roomList/roomList'
+import Chat from '../../components/chat/chat'
+import ChatForm from '../../components/chatform/chatform'
 
-const Room = () => {
+const Products = () => {
     return (
         <div className="home">
             <Sidebar />
             <div className="homeContainer">
                 <Navbar />
-                <div className="charts">
-                    <RoomList />
-                </div>
+                {/* <Chat /> */}
+                <ChatForm />
             </div>
         </div>
     )
 }
 
-export default Room
+export default Products

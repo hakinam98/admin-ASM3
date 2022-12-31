@@ -6,18 +6,19 @@ import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlin
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import convertMoney from '../../convertMoney';
 
 
 const Widget = ({ type }) => {
     const [infoUsers, setInforUsers] = useState({});
-    const [infoTrans, setInforTrans] = useState({});
+    const [inforOrders, setInforOrders] = useState({});
 
     useEffect(() => {
         async function fetchData() {
             await axios.get('http://localhost:5000/admin/inforusers')
                 .then(res => setInforUsers(res.data))
-            await axios.get('http://localhost:5000/admin/infortrans')
-                .then(res => setInforTrans(res.data))
+            await axios.get('http://localhost:5000/admin/infororders')
+                .then(res => setInforOrders(res.data))
         }
 
         fetchData();
@@ -46,7 +47,7 @@ const Widget = ({ type }) => {
                 title: 'ORDERS',
                 isMoney: false,
                 link: 'See All Oders',
-                amount: infoTrans.orders,
+                amount: inforOrders.ordersNum,
                 icon: (
                     <ShoppingCartOutlinedIcon className='icon' style={{
                         color: 'goldenrod',
@@ -60,7 +61,7 @@ const Widget = ({ type }) => {
                 title: 'EARNINGS',
                 isMoney: true,
                 link: 'View Earnings',
-                amount: infoTrans.earnings,
+                amount: inforOrders.earnings,
                 icon: (
                     <MonetizationOnOutlinedIcon className='icon' style={{
                         color: 'green',
@@ -74,7 +75,7 @@ const Widget = ({ type }) => {
                 title: 'BALLANCE',
                 isMoney: true,
                 link: 'See Details',
-                amount: infoTrans.balance,
+                amount: inforOrders.balance,
                 icon: (
                     <AccountBalanceWalletOutlinedIcon className='icon' style={{
                         color: 'purple',
@@ -93,7 +94,7 @@ const Widget = ({ type }) => {
         <div className='widget'>
             <div className='left'>
                 <span className='title'>{data.title}</span>
-                <span className='counter'>{data.isMoney && '$'} {data.amount}</span>
+                <span className='counter'>{convertMoney(data.amount)} {data.isMoney && 'VND'} </span>
             </div>
             <div className='right'>
                 {data.icon}

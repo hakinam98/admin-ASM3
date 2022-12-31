@@ -1,9 +1,9 @@
-import './newHotel.scss'
+import './newProduct.scss'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
-import AddHotel from '../../components/addHotel/addHotel'
+import AddProduct from '../../components/addproduct/addproduct'
 
-const NewHotel = () => {
+const NewProduct = () => {
   return (
     <div className="home">
       <Sidebar />
@@ -11,10 +11,10 @@ const NewHotel = () => {
         <Navbar />
         <div className="charts">
         </div>
-        <AddHotel />
+        <AddProduct />
       </div>
     </div>
   )
 }
 
-export default NewHotel
+export default NewProduct

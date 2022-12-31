@@ -12,8 +12,9 @@ const Login = () => {
     return axios.post('http://localhost:5000/admin/login', acc).then(res => {
       alert(res.data.message)
       if (res.data.message === 'Login successfully!') {
-        localStorage.setItem('user', JSON.stringify(res.data.user))
-        navigate('/admin')
+        localStorage.setItem('userId', JSON.stringify(res.data.userId))
+        localStorage.setItem('role', JSON.stringify(res.data.role))
+        window.location.reload(false);
       }
     })
   };
@@ -23,13 +24,13 @@ const Login = () => {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
-            <label>Username</label>
+            <label>Email</label>
             <input
-              type="text"
+              type="email"
               className="form-control mt-1"
-              placeholder="Enter Username"
-              name='usrrname'
-              {...register('username', { required: true })}
+              placeholder="Enter Email"
+              name='email'
+              {...register('email', { required: true })}
             />
           </div>
           <div className="form-group mt-3">

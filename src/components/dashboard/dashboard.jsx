@@ -1,13 +1,15 @@
 import './dashboard.scss'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import convertMoney from '../../convertMoney'
+
 
 const DashBoard = () => {
-  const [infoTrans, setInforTrans] = useState([]);
+  const [inforOrders, setInforOrders] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      await axios.get('http://localhost:5000/admin/infortrans')
-        .then(res => setInforTrans(res.data))
+      await axios.get('http://localhost:5000/admin/infororders')
+        .then(res => setInforOrders(res.data.orders))
     }
 
     fetchData();
@@ -15,7 +17,7 @@ const DashBoard = () => {
   return (
     <div className='chart'>
       <div className="title">
-        <h1>Lates Transactions</h1>
+        <h1>Lates Order</h1>
         <table className="table">
           <thead>
             <tr>
@@ -24,35 +26,34 @@ const DashBoard = () => {
                   <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 </div>
               </th>
-              <th scope="col">Id</th>
-              <th scope="col">User</th>
-              <th scope="col">Hotel</th>
-              <th scope="col">Room</th>
-              <th scope="col">Date</th>
-              <th scope="col">Price</th>
-              <th scope="col">Payment Method</th>
+              <th scope="col">Id User</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Address</th>
+              <th scope="col">Total</th>
+              <th scope="col">Delivery</th>
               <th scope="col">Status</th>
+              <th scope="col">Detail</th>
             </tr>
           </thead>
           <tbody>
-            {infoTrans.trans?.slice(0, 8).map(tran => {
+            {inforOrders?.map(order => {
               return (
-                <tr key={tran._id}>
+                <tr key={order._id}>
                   <th scope="row">
                     <div className="form-check">
                       <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                     </div>
                   </th>
-                  <td>{tran._id}</td>
-                  <td>{tran.user}</td>
-                  <td>{tran.hotel.name}</td>
-                  <td>{tran.room.toString()}</td>
-                  <td>{new Date(tran.dateStart).getDate() + "/" + new Date(tran.dateStart).getMonth() + "/" + new Date(tran.dateStart).getFullYear()
-                    + " - " + new Date(tran.dateEnd).getDate() + "/" + new Date(tran.dateEnd).getMonth() + "/" + new Date(tran.dateEnd).getFullYear()
-                  }</td>
-                  <td>${tran.price}</td>
-                  <td>{tran.payment}</td>
-                  <td><span className={tran.status === 'Booked' ? 'statusBooked' : (tran.status === 'Checkin' ? 'statusCheckin' : 'statusCheckout')}>{tran.status}</span></td>
+                  <td>{order.idUser}</td>
+                  <td>{order.fullname}</td>
+                  <td>{order.phone}</td>
+                  <td>{order.address}</td>
+                  <td>{convertMoney(order.total)} VND</td>
+                  <td>{order.delivery === false ? 'Chưa vận chuyển' : 'Đã vận chuyển'}</td>
+                  <td>{order.status === false ? 'Chưa thanh toán' : 'Đã thanh toán'}</td>
+                  <td><button type="button" value={order._id} className="btn btn btn-success">View</button>
+                  </td>
 
                 </tr>
               )

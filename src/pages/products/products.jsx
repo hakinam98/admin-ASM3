@@ -1,20 +1,20 @@
-import './newRoom.scss'
+import './products.scss'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
-import AddRoom from '../../components/addRoom/addRoom'
+import ProductsList from '../../components/productsList/productsList'
 
-const NewRoom = () => {
+const Products = () => {
     return (
         <div className="home">
             <Sidebar />
             <div className="homeContainer">
                 <Navbar />
                 <div className="charts">
+                    <ProductsList />
                 </div>
-                <AddRoom />
             </div>
         </div>
     )
 }
 
-export default NewRoom
+export default Products
