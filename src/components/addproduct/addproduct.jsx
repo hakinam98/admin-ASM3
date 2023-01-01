@@ -22,7 +22,7 @@ const AddProduct = () => {
             formData.append('images', data.images[i]);
         }
 
-        axios.post('http://localhost:5000/admin/addproduct', formData)
+        axios.post('https://backend-asm3-kappa.vercel.app/admin/addproduct', formData)
             .then(res => {
                 alert(res.data.message)
                 if (res.data.message === "Product created!") {

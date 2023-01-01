@@ -15,9 +15,9 @@ const Widget = ({ type }) => {
 
     useEffect(() => {
         async function fetchData() {
-            await axios.get('http://localhost:5000/admin/inforusers')
+            await axios.get('https://backend-asm3-kappa.vercel.app/admin/inforusers')
                 .then(res => setInforUsers(res.data))
-            await axios.get('http://localhost:5000/admin/infororders')
+            await axios.get('https://backend-asm3-kappa.vercel.app/admin/infororders')
                 .then(res => setInforOrders(res.data))
         }
 

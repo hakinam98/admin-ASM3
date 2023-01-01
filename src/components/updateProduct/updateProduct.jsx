@@ -22,7 +22,7 @@ const UpdateProduct = ({ product }) => {
             longDesc: longDesc,
         }
         console.log(editproduct)
-        axios.post('http://localhost:5000/admin/updateproduct', editproduct)
+        axios.post('https://backend-asm3-kappa.vercel.app/admin/updateproduct', editproduct)
             .then(res => {
                 console.log(res?.data.message)
                 if (res.data.message === "Product updated!") {

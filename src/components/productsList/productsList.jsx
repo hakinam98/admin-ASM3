@@ -12,7 +12,7 @@ const ProductsList = () => {
     const [inputText, setInputText] = useState("");
     useEffect(() => {
         async function fetchData() {
-            await axios.get('http://localhost:5000/admin/inforproducts')
+            await axios.get('https://backend-asm3-kappa.vercel.app/admin/inforproducts')
                 .then(res => setInforProducts(res.data.products))
         }
 
@@ -26,7 +26,7 @@ const ProductsList = () => {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        axios.delete(`http://localhost:5000/admin/inforproducts/${e.target.value}`).then(result => {
+                        axios.delete(`https://backend-asm3-kappa.vercel.app/admin/inforproducts/${e.target.value}`).then(result => {
                             console.log(result.data.message)
                         })
                         window.location.reload(false);
