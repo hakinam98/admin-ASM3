@@ -9,11 +9,7 @@ const Login = () => {
 
   const { register, handleSubmit } = useForm();
   const handleRegistration = (acc) => {
-    return axios.post('https://backend-asm3-kappa.vercel.app/admin/login', acc,
-      {
-        withCredentials: true
-      }
-    ).then(res => {
+    return axios.post('https://backend-asm3-kappa.vercel.app/admin/login', acc).then(res => {
       alert(res.data.message)
       if (res.data.message === 'Login successfully!') {
         localStorage.setItem('userId', JSON.stringify(res.data.userId))
