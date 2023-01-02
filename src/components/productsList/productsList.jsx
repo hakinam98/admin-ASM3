@@ -29,11 +29,12 @@ const ProductsList = () => {
                         axiosClient.delete(`/admin/inforproducts/${e.target.value}`).then(result => {
                             console.log(result.message)
                             return result.message;
-                        }).then(mess => {
-                            if (mess === 'Product deleted!') {
-                                window.location.reload(false);
-                            }
                         })
+                        // .then(mess => {
+                        //     if (mess === 'Product deleted!') {
+                        //         window.location.reload(false);
+                        //     }
+                        // })
                     }
                 },
                 {
