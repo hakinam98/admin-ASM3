@@ -85,7 +85,7 @@ const ProductsList = () => {
                                     <td>{product._id}</td>
                                     <td>{product.name}</td>
                                     <td>{convertMoney(product.price)} VND</td>
-                                    <td><img src={product.img1} alt='...' width='70' /></td>
+                                    <td><img src={product.img1} crossOrigin alt='...' width='70' /></td>
                                     <td>{product.category}</td>
                                     <td>
                                         <div className='d-inline-flex p-2'>

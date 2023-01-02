@@ -5,8 +5,8 @@ import axios from 'axios';
 const token = JSON.parse(localStorage.getItem('token'));
 
 const axiosClient = axios.create({
-    baseURL: 'https://backend-asm3-kappa.vercel.app',
-    // baseURL: 'http://localhost:5000',
+    // baseURL: 'https://backend-asm3-kappa.vercel.app',
+    baseURL: 'http://localhost:5000',
     headers: {
         'content-type': 'application/json',
         'content-type': 'multipart/form-data',
