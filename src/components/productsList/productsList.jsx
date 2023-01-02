@@ -30,11 +30,13 @@ const ProductsList = () => {
                             console.log(result.message)
                             return result.message;
                         })
-                        // .then(mess => {
-                        //     if (mess === 'Product deleted!') {
-                        //         window.location.reload(false);
-                        //     }
-                        // })
+                            .then(mess => {
+                                if (mess === 'Product deleted!') {
+                                    setTimeout(() => {
+                                        window.location.reload(false);
+                                    }, 3000);
+                                }
+                            })
                     }
                 },
                 {
