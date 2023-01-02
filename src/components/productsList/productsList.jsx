@@ -34,7 +34,7 @@ const ProductsList = () => {
                                 if (mess === 'Product deleted!') {
                                     setTimeout(() => {
                                         window.location.reload(false);
-                                    }, 3000);
+                                    }, 2000);
                                 }
                             })
                     }

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axiosClient from '../API/axiosClient'
 
-const socket = io('https://localhost:5000', { transports: ['websocket'] });
+const socket = io('https://backend-asm3-kappa.vercel.app', { transports: ['websocket'] });
 
 const ChatForm = () => {
     const [textMessage, setTextMessage] = useState('');
