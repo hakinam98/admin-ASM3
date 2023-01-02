@@ -25,11 +25,15 @@ const ProductsList = () => {
             buttons: [
                 {
                     label: 'Yes',
-                    onClick: () => {
+                    onClick: async () => {
                         axiosClient.delete(`/admin/inforproducts/${e.target.value}`).then(result => {
                             console.log(result.message)
+                            return result.message;
+                        }).then(mess => {
+                            if (mess === 'Product deleted!') {
+                                window.location.reload(false);
+                            }
                         })
-                        window.location.reload(false);
                     }
                 },
                 {
