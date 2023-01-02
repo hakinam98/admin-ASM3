@@ -7,6 +7,7 @@ import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalance
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import convertMoney from '../../convertMoney';
+import axiosClient from '../API/axiosClient';
 
 
 const Widget = ({ type }) => {
@@ -15,10 +16,10 @@ const Widget = ({ type }) => {
 
     useEffect(() => {
         async function fetchData() {
-            await axios.get('https://backend-asm3-kappa.vercel.app/admin/inforusers')
-                .then(res => setInforUsers(res.data))
-            await axios.get('https://backend-asm3-kappa.vercel.app/admin/infororders')
-                .then(res => setInforOrders(res.data))
+            await axiosClient.get('/admin/inforusers')
+                .then(res => setInforUsers(res))
+            await axiosClient.get('/admin/infororders')
+                .then(res => setInforOrders(res))
         }
 
         fetchData();

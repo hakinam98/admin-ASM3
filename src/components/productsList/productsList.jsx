@@ -1,19 +1,19 @@
 import './productsList.scss'
 import { useEffect, useState } from 'react';
 import UpdateProduct from '../updateProduct/updateProduct';
-import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import convertMoney from '../../convertMoney'
 import TextField from "@mui/material/TextField";
+import axiosClient from '../API/axiosClient'
 
 const ProductsList = () => {
     const [inforProducts, setInforProducts] = useState([]);
     const [inputText, setInputText] = useState("");
     useEffect(() => {
         async function fetchData() {
-            await axios.get('https://backend-asm3-kappa.vercel.app/admin/inforproducts')
-                .then(res => setInforProducts(res.data.products))
+            await axiosClient.get('/admin/inforproducts')
+                .then(res => setInforProducts(res.products))
         }
 
         fetchData();
@@ -26,8 +26,8 @@ const ProductsList = () => {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        axios.delete(`https://backend-asm3-kappa.vercel.app/admin/inforproducts/${e.target.value}`).then(result => {
-                            console.log(result.data.message)
+                        axiosClient.delete(`/admin/inforproducts/${e.target.value}`).then(result => {
+                            console.log(result.message)
                         })
                         window.location.reload(false);
                     }

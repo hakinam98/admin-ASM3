@@ -1,6 +1,6 @@
 import './updateProduct.scss'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosClient from '../API/axiosClient';
 import Modal from "react-bootstrap/Modal";
 import Button from 'react-bootstrap/Button';
 const UpdateProduct = ({ product }) => {
@@ -22,10 +22,10 @@ const UpdateProduct = ({ product }) => {
             longDesc: longDesc,
         }
         console.log(editproduct)
-        axios.post('https://backend-asm3-kappa.vercel.app/admin/updateproduct', editproduct)
+        axiosClient.post('/admin/updateproduct', editproduct)
             .then(res => {
-                console.log(res?.data.message)
-                if (res.data.message === "Product updated!") {
+                console.log(res?.message)
+                if (res.message === "Product updated!") {
                     window.location.reload(false);
                 }
             })

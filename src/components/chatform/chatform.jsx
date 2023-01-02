@@ -3,10 +3,9 @@ import './chatform.scss'
 import io from 'socket.io-client';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
+import axiosClient from '../API/axiosClient'
 
-
-const socket = io('https://backend-asm3-kappa.vercel.app', { transports: ['websocket'] });
+const socket = io('https://localhost:5000', { transports: ['websocket'] });
 
 const ChatForm = () => {
     const [textMessage, setTextMessage] = useState('');
@@ -16,9 +15,9 @@ const ChatForm = () => {
     const [load, setLoad] = useState(false);
 
     const fetchDataRoom = async () => {
-        axios.get('https://backend-asm3-kappa.vercel.app/chatrooms/getroomid')
+        axiosClient.get('/chatrooms/getroomid')
             .then(res => {
-                const rooms = res.data.chats;
+                const rooms = res.chats;
                 rooms.sort((a, b) => b.createdAt - a.createdAt)
                 setRoomList(rooms)
             })
@@ -35,7 +34,7 @@ const ChatForm = () => {
             roomId: roomId,
             is_admin: true,
         };
-        await axios.put('https://backend-asm3-kappa.vercel.app/chatrooms/addMessage', data)
+        await axiosClient.put('/chatrooms/addMessage', data)
         setTextMessage('');
         setTimeout(() => {
             setLoad(true);
@@ -45,8 +44,8 @@ const ChatForm = () => {
     };
 
     const fetchData = async () => {
-        const response = await axios.get(`https://backend-asm3-kappa.vercel.app/chatrooms/getById?roomId=${roomId}`);
-        setMessage(response.data.content);
+        const response = await axiosClient.get(`/chatrooms/getById?roomId=${roomId}`);
+        setMessage(response.content);
     };
 
 

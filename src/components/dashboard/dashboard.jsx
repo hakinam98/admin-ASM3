@@ -1,15 +1,15 @@
 import './dashboard.scss'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import convertMoney from '../../convertMoney'
+import axiosClient from '../API/axiosClient'
 
 
 const DashBoard = () => {
   const [inforOrders, setInforOrders] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      await axios.get('https://backend-asm3-kappa.vercel.app/admin/infororders')
-        .then(res => setInforOrders(res.data.orders))
+      await axiosClient.get('/admin/infororders')
+        .then(res => setInforOrders(res.orders))
     }
 
     fetchData();

@@ -1,6 +1,6 @@
 import './addproduct.scss'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosClient from '../API/axiosClient';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const AddProduct = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm()
     const handleSend = (data) => {
-        console.log(data.images)
+        console.log(data.files)
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('category', data.category);
@@ -16,16 +16,13 @@ const AddProduct = () => {
         formData.append('shortDesc', data.shortDesc);
         formData.append('longDesc', data.longDesc);
 
-        // formData.append('images', data.images);
-
-        for (let i = 0; i < data.images.length; i++) {
-            formData.append('images', data.images[i]);
+        for (const file of data.files) {
+            formData.append('files', file);
         }
-
-        axios.post('https://backend-asm3-kappa.vercel.app/admin/addproduct', formData)
+        axiosClient.post('/admin/addproduct', formData)
             .then(res => {
-                alert(res.data.message)
-                if (res.data.message === "Product created!") {
+                alert(res.message)
+                if (res.message === "Product created!") {
                     navigate('/products')
                 }
             })
@@ -70,7 +67,7 @@ const AddProduct = () => {
                     <div className="col">
                         <div className="form-outline">
                             <label htmlFor="formFileMultiple" className="form-label">Upload image(4 images)</label>
-                            <input className="form-control" type="file" id="formFileMultiple" multiple {...register('images', { required: true })} />
+                            <input className="form-control" type="file" id="formFileMultiple" multiple {...register('files', { required: true })} />
                         </div>
                     </div>
                     <div className="button">

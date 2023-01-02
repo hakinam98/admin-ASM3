@@ -11,6 +11,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem('userId')
     localStorage.removeItem('role')
+    localStorage.removeItem('token')
     navigation('/')
     window.location.reload(false)
   }

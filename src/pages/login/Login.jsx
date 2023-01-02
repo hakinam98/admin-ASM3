@@ -2,23 +2,21 @@ import './login.scss'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosClient from '../../components/API/axiosClient';
 
 const Login = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
   const handleRegistration = (acc) => {
-    return axios.post('https://backend-asm3-kappa.vercel.app/admin/login', acc, {
-      // return axios.post('http://localhost:5000/admin/login', acc, {
-      headers: {
-        "withCredentials": true
-      }
-    }).then(res => {
-      alert(res.data.message)
-      if (res.data.message === 'Login successfully!') {
-        localStorage.setItem('userId', JSON.stringify(res.data.userId))
-        localStorage.setItem('role', JSON.stringify(res.data.role))
+    return axiosClient.post('/admin/login', acc).then(res => {
+      console.log(res)
+
+      alert(res.message)
+      if (res.message === 'Login successfully!') {
+        localStorage.setItem('userId', JSON.stringify(res.userId))
+        localStorage.setItem('role', JSON.stringify(res.role))
+        localStorage.setItem('token', JSON.stringify(res.token))
         window.location.reload(false);
       }
     })
